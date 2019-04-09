@@ -1,5 +1,6 @@
 package com.example.myplaces;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
+    static int NEW_PLACE=1;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -50,15 +53,27 @@ public class MainActivity extends AppCompatActivity {
             Intent i =new Intent(this,About.class);
             startActivity(i);
         }else if(id == R.id.my_places_item) {
-            Toast.makeText(this, "My Places", Toast.LENGTH_SHORT).show();
+
             Intent i =new Intent(this,MyPlacesList.class );
             startActivity(i);
         }
         else if(id == R.id.new_place_item) {
-            Toast.makeText(this, "New Place", Toast.LENGTH_SHORT).show();
+            Intent i =new Intent(this,EditMyPlaceActivity.class);
+            startActivityForResult(i,NEW_PLACE);
+
 
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(resultCode== Activity.RESULT_OK){
+            Toast.makeText(this, "NEW PLACE ADDED", Toast.LENGTH_SHORT).show();
+  /*          ListView myPlacesList=(ListView)findViewById(R.id.my_places_list);
+            myPlacesList.setAdapter(new ArrayAdapter<MyPlace>(this,android.R.layout.simple_list_item_1,MyPlacesData.getInstance().getMyPlaces()));
+*/
+        }
     }
 }

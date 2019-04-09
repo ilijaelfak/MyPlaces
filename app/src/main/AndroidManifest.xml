@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ViewMyPlacesActivity"
+            android:label="@string/title_activity_view_my_places"
+            android:parentActivityName=".MyPlacesList"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myplaces.MyPlacesList" />
+        </activity>
+        <activity
+            android:name=".EditMyPlaceActivity"
+            android:label="@string/title_activity_edit_my_place"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myplaces.MainActivity" />
+        </activity>
+        <activity
             android:name=".MyPlacesList"
             android:label="@string/title_activity_my_places_list"
             android:parentActivityName=".MainActivity"
@@ -31,7 +49,7 @@
         <activity
             android:name=".About"
             android:label="About"
-            android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
     </application>
 
 </manifest>
